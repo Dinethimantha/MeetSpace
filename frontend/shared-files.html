@@ -1,0 +1,199 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MeetSpace | Shared Files</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/shared-files.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+
+<div class="app-layout">
+
+    <aside class="sidebar">
+        <div class="brand">
+            <div class="brand-icon">
+                <i class="fa-solid fa-video"></i>
+            </div>
+            <span>MeetSpace</span>
+        </div>
+
+        <div class="menu-label">MENU</div>
+
+        <nav class="navigation">
+            <a href="dashboard.html" class="nav-link">
+                <i class="fa-solid fa-house"></i>
+                <span>Dashboard</span>
+            </a>
+
+            <a href="create-meeting.html" class="nav-link">
+                <i class="fa-solid fa-plus"></i>
+                <span>Create Meeting</span>
+            </a>
+
+            <a href="join-meeting.html" class="nav-link">
+                <i class="fa-solid fa-right-to-bracket"></i>
+                <span>Join Meeting</span>
+            </a>
+
+            <a href="my-meetings.html" class="nav-link">
+                <i class="fa-solid fa-calendar-days"></i>
+                <span>My Meetings</span>
+            </a>
+
+            <a href="meeting-history.html" class="nav-link">
+                <i class="fa-solid fa-clock-rotate-left"></i>
+                <span>Meeting History</span>
+            </a>
+        </nav>
+
+        <div class="menu-label tools-label">COLLABORATION</div>
+
+        <nav class="navigation">
+            <a href="shared-files.html" class="nav-link active">
+                <i class="fa-solid fa-folder-open"></i>
+                <span>Shared Files</span>
+            </a>
+
+          <a href="whiteboard.html" class="nav-link">
+    <i class="fa-solid fa-chalkboard"></i>
+    <span>Whiteboard</span>
+</a>
+        </nav>
+
+        <div class="sidebar-bottom">
+            <div class="help-card">
+                <div class="help-icon">
+                    <i class="fa-solid fa-headset"></i>
+                </div>
+                <h4>Need Help?</h4>
+                <p>We're here to help you.</p>
+                <a href="#">Contact Support</a>
+            </div>
+
+            <a href="#" class="nav-link logout-link" id="logoutBtn">
+                <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                <span>Logout</span>
+            </a>
+        </div>
+    </aside>
+
+    <main class="main-content">
+
+        <header class="topbar">
+            <div>
+                <div class="welcome-label">COLLABORATION</div>
+                <h2>Shared Files</h2>
+            </div>
+
+            <div class="topbar-right">
+                <button class="notification-btn">
+                    <i class="fa-regular fa-bell"></i>
+                    <span></span>
+                </button>
+
+                <div class="profile">
+                    <div class="profile-avatar" id="profileAvatar">D</div>
+                    <div class="profile-info">
+                        <h4 id="profileName">User</h4>
+                        <p>Free Account</p>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <section class="dashboard-content shared-files-content">
+
+            <div class="files-heading">
+                <div>
+                    <h2>Your Shared Files</h2>
+                    <p>Upload and manage files shared with your meeting participants.</p>
+                </div>
+            </div>
+
+            <div class="files-toolbar">
+
+                <div class="meeting-select-group">
+                    <label for="meetingSelect">Select Meeting</label>
+                    <select id="meetingSelect">
+                        <option value="">Loading meetings...</option>
+                    </select>
+                </div>
+
+                <div class="file-search">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" id="fileSearch" placeholder="Search files...">
+                </div>
+
+                <button class="upload-btn" id="uploadBtn">
+                    <i class="fa-solid fa-cloud-arrow-up"></i>
+                    Upload File
+                </button>
+
+            </div>
+
+            <div class="file-stats">
+                <div class="file-stat-card">
+                    <div class="file-stat-icon purple">
+                        <i class="fa-solid fa-folder"></i>
+                    </div>
+                    <div>
+                        <p>Total Files</p>
+                        <h3 id="totalFiles">0</h3>
+                    </div>
+                </div>
+
+                <div class="file-stat-card">
+                    <div class="file-stat-icon blue">
+                        <i class="fa-solid fa-hard-drive"></i>
+                    </div>
+                    <div>
+                        <p>Total Storage</p>
+                        <h3 id="totalStorage">0 KB</h3>
+                    </div>
+                </div>
+            </div>
+
+            <div class="files-panel">
+
+                <div class="files-panel-header">
+                    <div>
+                        <h3>Meeting Documents</h3>
+                        <p id="selectedMeetingText">Select a meeting to view shared files.</p>
+                    </div>
+
+                    <span class="file-count" id="fileCount">0 Files</span>
+                </div>
+
+                <div id="filesContainer" class="files-container">
+                    <div class="files-empty">
+                        <i class="fa-solid fa-folder-open"></i>
+                        <h3>No Meeting Selected</h3>
+                        <p>Select a meeting to view its shared files.</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="footer">
+                <p>© 2026 MeetSpace. All rights reserved.</p>
+                <p>Made for better collaboration.</p>
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+<script src="js/shared-files.js"></script>
+
+</body>
+</html>

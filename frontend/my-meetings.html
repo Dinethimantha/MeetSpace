@@ -1,0 +1,202 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MeetSpace | My Meetings</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/my-meetings.css">
+</head>
+<body>
+
+<div class="app-layout">
+    <aside class="sidebar">
+        <div class="brand">
+            <div class="brand-icon"><i class="fa-solid fa-video"></i></div>
+            <span>MeetSpace</span>
+        </div>
+
+        <div class="menu-label">MENU</div>
+
+        <nav class="navigation">
+            <a href="dashboard.html" class="nav-link">
+                <i class="fa-solid fa-house"></i><span>Dashboard</span>
+            </a>
+            <a href="create-meeting.html" class="nav-link">
+                <i class="fa-solid fa-plus"></i><span>Create Meeting</span>
+            </a>
+            <a href="join-meeting.html" class="nav-link">
+                <i class="fa-solid fa-right-to-bracket"></i><span>Join Meeting</span>
+            </a>
+            <a href="my-meetings.html" class="nav-link active">
+                <i class="fa-solid fa-calendar-days"></i><span>My Meetings</span>
+            </a>
+            <a href="meeting-history.html" class="nav-link">
+                <i class="fa-solid fa-clock-rotate-left"></i><span>Meeting History</span>
+            </a>
+        </nav>
+
+        <div class="menu-label tools-label">COLLABORATION</div>
+
+        <nav class="navigation">
+            <a href="shared-files.html" class="nav-link">
+    <i class="fa-solid fa-folder-open"></i>
+    <span>Shared Files</span>
+</a>
+            <a href="whiteboard.html" class="nav-link">
+    <i class="fa-solid fa-chalkboard"></i>
+    <span>Whiteboard</span>
+</a>
+        </nav>
+
+        <div class="sidebar-bottom">
+            <div class="help-card">
+                <div class="help-icon"><i class="fa-solid fa-circle-question"></i></div>
+                <h4>Need Help?</h4>
+                <p>Get support with your meetings.</p>
+                <a href="#">Contact Support <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+
+            <a href="#" class="nav-link logout-link" id="logoutBtn">
+                <i class="fa-solid fa-right-from-bracket"></i><span>Logout</span>
+            </a>
+        </div>
+    </aside>
+
+    <main class="main-content">
+        <header class="topbar">
+            <div>
+                <p class="welcome-label">WORKSPACE</p>
+                <h2>My Meetings</h2>
+            </div>
+
+            <div class="topbar-right">
+                <button class="icon-button" aria-label="Notifications">
+                    <i class="fa-regular fa-bell"></i>
+                    <span class="notification-dot"></span>
+                </button>
+
+                <div class="profile">
+                    <div class="profile-avatar" id="profileAvatar">D</div>
+                    <div class="profile-info">
+                        <strong id="profileName">User</strong>
+                        <span>Free Account</span>
+                    </div>
+                    <i class="fa-solid fa-chevron-down"></i>
+                </div>
+            </div>
+        </header>
+
+        <section class="dashboard-content my-meetings-content">
+            <div class="my-meetings-welcome">
+                <div>
+                    <p class="welcome-date" id="currentDate">YOUR WORKSPACE</p>
+                    <h1>Manage your <span>meetings.</span></h1>
+                    <p class="welcome-description">
+                        View and manage all meetings you have created or joined.
+                    </p>
+                </div>
+
+                <div class="my-meetings-decoration">
+                    <i class="fa-solid fa-calendar-days"></i>
+                </div>
+            </div>
+
+            <div class="my-meetings-stats">
+                <div class="stat-card">
+                    <div class="stat-top">
+                        <span>Total Meetings</span>
+                        <div class="stat-icon purple">
+                            <i class="fa-solid fa-video"></i>
+                        </div>
+                    </div>
+                    <h2 id="totalMeetings">0</h2>
+                    <p>All your meetings</p>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-top">
+                        <span>Active Meetings</span>
+                        <div class="stat-icon green">
+                            <i class="fa-solid fa-circle-play"></i>
+                        </div>
+                    </div>
+                    <h2 id="activeMeetings">0</h2>
+                    <p>Currently available</p>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-top">
+                        <span>Ended Meetings</span>
+                        <div class="stat-icon orange">
+                            <i class="fa-solid fa-circle-check"></i>
+                        </div>
+                    </div>
+                    <h2 id="endedMeetings">0</h2>
+                    <p>Previously completed</p>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-top">
+                        <span>Total Participants</span>
+                        <div class="stat-icon blue">
+                            <i class="fa-solid fa-users"></i>
+                        </div>
+                    </div>
+                    <h2 id="totalParticipants">0</h2>
+                    <p>Across your meetings</p>
+                </div>
+            </div>
+
+            <section class="panel my-meetings-panel">
+                <div class="panel-heading my-meetings-heading">
+                    <div>
+                        <h2>All Meetings</h2>
+                        <p>Your created and joined meetings</p>
+                    </div>
+
+                    <a href="create-meeting.html" class="create-meeting-link">
+                        <i class="fa-solid fa-plus"></i> Create Meeting
+                    </a>
+                </div>
+
+                <div class="meeting-toolbar">
+                    <div class="meeting-search">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input type="text" id="meetingSearch" placeholder="Search by meeting title or ID...">
+                    </div>
+
+                    <select id="meetingFilter" class="meeting-filter">
+                        <option value="all">All Meetings</option>
+                        <option value="active">Active Meetings</option>
+                        <option value="ended">Ended Meetings</option>
+                    </select>
+
+                    <button class="refresh-meetings-btn" id="refreshMeetingsBtn" type="button" aria-label="Refresh meetings">
+                        <i class="fa-solid fa-rotate"></i>
+                    </button>
+                </div>
+
+                <div id="meetingsList" class="my-meetings-list">
+                    <div class="meetings-loading">
+                        <i class="fa-solid fa-spinner fa-spin"></i>
+                        <p>Loading your meetings...</p>
+                    </div>
+                </div>
+            </section>
+
+            <footer class="footer">
+                <span>© 2026 MeetSpace. All rights reserved.</span>
+                <span>Connect. Collaborate. Create.</span>
+            </footer>
+        </section>
+    </main>
+</div>
+
+<script src="js/my-meetings.js"></script>
+</body>
+</html>

@@ -1,0 +1,329 @@
+
+.whiteboard-content {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+}
+
+.whiteboard-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.whiteboard-heading h2 {
+    color: var(--text);
+    font-size: 23px;
+    font-weight: 700;
+    margin-bottom: 7px;
+}
+
+.whiteboard-heading p {
+    color: var(--muted);
+    font-size: 13px;
+}
+
+.connection-status {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    color: var(--muted);
+    font-size: 12px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 10px 15px;
+}
+
+.connection-status span {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--orange);
+}
+
+.connection-status.connected span {
+    background: var(--green);
+    box-shadow: 0 0 8px var(--green);
+}
+
+.connection-status.disconnected span {
+    background: #ef5350;
+}
+
+.whiteboard-meeting-bar {
+    display: flex;
+    align-items: end;
+    gap: 12px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 18px;
+}
+
+.meeting-input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex: 1;
+    max-width: 400px;
+}
+
+.meeting-input-group label {
+    color: var(--muted);
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.meeting-input-group input {
+    width: 100%;
+    height: 42px;
+    padding: 0 13px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 7px;
+    outline: none;
+    color: var(--text);
+    font-family: inherit;
+    font-size: 13px;
+}
+
+.meeting-input-group input:focus {
+    border-color: var(--primary);
+}
+
+.connect-btn {
+    height: 42px;
+    padding: 0 20px;
+    border: none;
+    border-radius: 7px;
+    background: var(--primary);
+    color: #fff;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.connect-btn:hover {
+    opacity: 0.88;
+    transform: translateY(-1px);
+}
+
+.connect-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.whiteboard-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 15px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 13px 16px;
+}
+
+.drawing-tools {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.tool-btn {
+    width: 37px;
+    height: 37px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--card-light);
+    border: 1px solid var(--border);
+    border-radius: 7px;
+    color: var(--muted);
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.tool-btn:hover,
+.tool-btn.active {
+    background: rgba(121, 101, 245, 0.18);
+    color: var(--primary);
+    border-color: var(--primary);
+}
+
+.tool-divider {
+    height: 28px;
+    width: 1px;
+    background: var(--border);
+}
+
+.color-picker-label {
+    color: var(--muted);
+    font-size: 12px;
+    font-weight: 600;
+}
+
+#brushColor {
+    width: 34px;
+    height: 32px;
+    padding: 2px;
+    background: var(--card-light);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+#brushSize {
+    width: 90px;
+    accent-color: var(--primary);
+    cursor: pointer;
+}
+
+#brushSizeValue {
+    color: var(--text);
+    font-size: 12px;
+    min-width: 27px;
+}
+
+.clear-board-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    height: 37px;
+    padding: 0 14px;
+    background: rgba(239, 83, 80, 0.10);
+    border: 1px solid rgba(239, 83, 80, 0.25);
+    border-radius: 7px;
+    color: #ef7774;
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.clear-board-btn:hover {
+    background: rgba(239, 83, 80, 0.2);
+}
+
+.whiteboard-panel {
+    position: relative;
+    width: 100%;
+    height: 480px;
+    overflow: hidden;
+    background: #ffffff;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+}
+
+#whiteboardCanvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+    cursor: crosshair;
+    touch-action: none;
+}
+
+.canvas-placeholder {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: #ffffff;
+    color: #64748b;
+    pointer-events: none;
+}
+
+.canvas-placeholder i {
+    font-size: 42px;
+    color: #7965f5;
+    margin-bottom: 17px;
+}
+
+.canvas-placeholder h3 {
+    color: #1e293b;
+    font-size: 17px;
+    margin-bottom: 8px;
+}
+
+.canvas-placeholder p {
+    max-width: 320px;
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+.canvas-placeholder.hidden {
+    display: none;
+}
+
+.whiteboard-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    color: var(--muted);
+    font-size: 11px;
+}
+
+.whiteboard-footer i {
+    color: var(--green);
+    margin-right: 5px;
+}
+
+@media (max-width: 760px) {
+    .whiteboard-heading {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .whiteboard-meeting-bar {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .meeting-input-group {
+        max-width: none;
+    }
+
+    .connect-btn {
+        width: 100%;
+    }
+
+    .whiteboard-toolbar {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .whiteboard-panel {
+        height: 380px;
+    }
+
+    .whiteboard-footer {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 420px) {
+    .drawing-tools {
+        gap: 8px;
+    }
+
+    #brushSize {
+        width: 65px;
+    }
+
+    .whiteboard-panel {
+        height: 320px;
+    }
+}

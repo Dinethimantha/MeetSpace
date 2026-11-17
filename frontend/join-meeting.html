@@ -1,0 +1,159 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join Meeting | MeetSpace</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/join-meeting.css">
+</head>
+<body>
+
+<div class="app-layout">
+
+    <aside class="sidebar">
+        <div class="brand">
+            <div class="brand-icon"><i class="fa-solid fa-video"></i></div>
+            <span>MeetSpace</span>
+        </div>
+
+        <div class="menu-label">MENU</div>
+
+        <nav class="navigation">
+            <a href="dashboard.html" class="nav-link">
+                <i class="fa-solid fa-house"></i>
+                <span>Dashboard</span>
+            </a>
+            <a href="create-meeting.html" class="nav-link">
+                <i class="fa-solid fa-plus"></i>
+                <span>Create Meeting</span>
+            </a>
+            <a href="join-meeting.html" class="nav-link active">
+                <i class="fa-solid fa-right-to-bracket"></i>
+                <span>Join Meeting</span>
+            </a>
+            <a href="my-meetings.html" class="nav-link">
+    <i class="fa-solid fa-calendar-days"></i><span>My Meetings</span>
+</a>
+            <a href="meeting-history.html" class="nav-link">
+    <i class="fa-solid fa-clock-rotate-left"></i><span>Meeting History</span>
+</a>
+        </nav>
+
+        <div class="menu-label">COLLABORATION</div>
+
+        <nav class="navigation">
+            <a href="shared-files.html" class="nav-link">
+    <i class="fa-solid fa-folder-open"></i>
+    <span>Shared Files</span>
+</a>
+            <a href="whiteboard.html" class="nav-link">
+    <i class="fa-solid fa-chalkboard"></i>
+    <span>Whiteboard</span>
+</a>
+        </nav>
+
+        <div class="sidebar-bottom">
+            <div class="help-card">
+                <div class="help-icon"><i class="fa-solid fa-headset"></i></div>
+                <div>
+                    <strong>Need Help?</strong>
+                    <p>Contact Support</p>
+                </div>
+            </div>
+
+            <a href="#" class="nav-link logout-link" id="logoutBtn">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                <span>Logout</span>
+            </a>
+        </div>
+    </aside>
+
+    <main class="main-content">
+
+        <header class="topbar">
+            <div>
+                <span class="topbar-label">WORKSPACE</span>
+                <h2>Join Meeting</h2>
+            </div>
+
+            <div class="topbar-right">
+                <button class="notification-btn" type="button">
+                    <i class="fa-regular fa-bell"></i>
+                </button>
+
+                <div class="profile">
+                    <div class="profile-avatar" id="profileAvatar">U</div>
+                    <div class="profile-info">
+                        <strong id="profileName">User</strong>
+                        <span>Member</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <section class="join-content">
+
+            <div class="join-heading">
+                <span class="section-tag">VIDEO CONFERENCING</span>
+                <h1>Join a Meeting</h1>
+                <p>Enter your meeting ID to connect with your team.</p>
+            </div>
+
+            <div class="join-card">
+                <div class="join-icon">
+                    <i class="fa-solid fa-video"></i>
+                </div>
+
+                <h2>Ready to connect?</h2>
+                <p>Enter the meeting ID shared by your host.</p>
+
+                <form id="joinMeetingForm">
+                    <label for="meetingId">Meeting ID</label>
+
+                    <div class="meeting-input-wrapper">
+                        <i class="fa-solid fa-key"></i>
+                        <input
+                            type="text"
+                            id="meetingId"
+                            placeholder="Enter meeting ID"
+                            maxlength="8"
+                            autocomplete="off"
+                            required
+                        >
+                    </div>
+
+                    <div id="errorMessage" class="error-message"></div>
+
+                    <button type="submit" id="joinMeetingBtn">
+                        <i class="fa-solid fa-right-to-bracket"></i>
+                        Join Meeting
+                    </button>
+                </form>
+
+                <div class="join-note">
+                    <i class="fa-solid fa-shield-halved"></i>
+                    <span>Your meeting connection is protected.</span>
+                </div>
+            </div>
+
+            <div class="join-footer">
+                <i class="fa-solid fa-circle-info"></i>
+                Make sure you have the correct meeting ID before joining.
+            </div>
+
+        </section>
+
+    </main>
+</div>
+
+<script src="https://cdn.socket.io/4.8.1/socket.io.min.js"></script>
+<script src="js/join-meeting.js"></script>
+
+</body>
+</html>

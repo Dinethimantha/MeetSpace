@@ -1,0 +1,217 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MeetSpace Socket Test</title>
+    <script src="https://cdn.socket.io/4.8.1/socket.io.min.js"></script>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #101827;
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background: #1e293b;
+            width: 90%;
+            max-width: 500px;
+            padding: 30px;
+            border-radius: 14px;
+        }
+
+        h2 {
+            margin-top: 0;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0 15px;
+            border: 1px solid #475569;
+            border-radius: 7px;
+            background: #0f172a;
+            color: white;
+        }
+
+        button {
+            padding: 11px 16px;
+            margin: 5px 3px 5px 0;
+            border: none;
+            border-radius: 7px;
+            cursor: pointer;
+            color: white;
+            background: #6366f1;
+        }
+
+        button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        #status {
+            margin: 15px 0;
+            color: #fbbf24;
+        }
+
+        #logs {
+            background: #0f172a;
+            padding: 15px;
+            border-radius: 7px;
+            min-height: 100px;
+            max-height: 220px;
+            overflow-y: auto;
+            font-size: 13px;
+            line-height: 1.6;
+            overflow-wrap: anywhere;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h2>MeetSpace Socket Test</h2>
+
+        <label for="meetingId">Meeting ID</label>
+        <input type="text" id="meetingId" value="AFD20E77">
+
+        <label for="userId">User ID</label>
+        <input type="text" id="userId" value="6af5e733c7ffa79cd014ee84">
+
+        <div id="status">Connecting...</div>
+
+        <button id="joinBtn" disabled>Join Meeting</button>
+        <button id="leaveBtn" disabled>Leave Meeting</button>
+
+        <h3>Activity Logs</h3>
+        <div id="logs"></div>
+    </div>
+
+    <script>
+        const socket = io("http://localhost:5000");
+
+        const meetingIdInput = document.getElementById("meetingId");
+        const userIdInput = document.getElementById("userId");
+        const status = document.getElementById("status");
+        const logs = document.getElementById("logs");
+        const joinBtn = document.getElementById("joinBtn");
+        const leaveBtn = document.getElementById("leaveBtn");
+
+        let currentMeetingId = "";
+
+        function addLog(message) {
+            const item = document.createElement("div");
+
+            item.textContent =
+                new Date().toLocaleTimeString() + " - " + message;
+
+            logs.appendChild(item);
+            logs.scrollTop = logs.scrollHeight;
+        }
+
+        socket.on("connect", () => {
+            status.textContent = "Connected to MeetSpace server";
+            status.style.color = "#4ade80";
+
+            joinBtn.disabled = false;
+
+            addLog("Socket connected: " + socket.id);
+        });
+
+        socket.on("connect_error", (error) => {
+            status.textContent = "Connection failed";
+            status.style.color = "#f87171";
+
+            addLog("Connection error: " + error.message);
+        });
+
+        joinBtn.addEventListener("click", () => {
+            const meetingId = meetingIdInput.value.trim().toUpperCase();
+            const userId = userIdInput.value.trim();
+
+            if (!meetingId || !userId) {
+                addLog("Please enter Meeting ID and User ID");
+                return;
+            }
+
+            if (currentMeetingId) {
+                addLog("You are already in a meeting");
+                return;
+            }
+
+            socket.emit("join-meeting", {
+                meetingId,
+                userId
+            });
+
+            addLog("Join request sent: " + meetingId);
+        });
+
+        leaveBtn.addEventListener("click", () => {
+            if (!currentMeetingId) return;
+
+            socket.emit("leave-meeting", {
+                meetingId: currentMeetingId,
+                userId: userIdInput.value.trim()
+            });
+
+            addLog("Leave request sent");
+
+            currentMeetingId = "";
+            joinBtn.disabled = false;
+            leaveBtn.disabled = true;
+        });
+
+        socket.on("meeting-joined", (data) => {
+            currentMeetingId = data.meetingId;
+
+            addLog(data.message);
+            addLog("Meeting ID: " + data.meetingId);
+
+            joinBtn.disabled = true;
+            leaveBtn.disabled = false;
+        });
+
+        socket.on("user-joined", (data) => {
+            addLog("Another participant joined: " + data.userId);
+        });
+
+        socket.on("user-left", (data) => {
+            addLog("A participant left: " + data.userId);
+        });
+
+        socket.on("meeting-error", (data) => {
+            addLog("Meeting error: " + data.message);
+
+            currentMeetingId = "";
+            joinBtn.disabled = false;
+            leaveBtn.disabled = true;
+        });
+
+        socket.on("disconnect", () => {
+            status.textContent = "Disconnected from server";
+            status.style.color = "#f87171";
+
+            joinBtn.disabled = true;
+            leaveBtn.disabled = true;
+
+            currentMeetingId = "";
+
+            addLog("Socket disconnected");
+        });
+    </script>
+
+</body>
+</html>

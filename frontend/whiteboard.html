@@ -1,0 +1,184 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MeetSpace | Whiteboard</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/whiteboard.css">
+</head>
+<body>
+
+<div class="app-layout">
+
+    <aside class="sidebar">
+        <div class="brand">
+            <div class="brand-icon">
+                <i class="fa-solid fa-video"></i>
+            </div>
+            <span>MeetSpace</span>
+        </div>
+
+        <div class="menu-label">MENU</div>
+
+        <nav class="navigation">
+            <a href="dashboard.html" class="nav-link">
+                <i class="fa-solid fa-house"></i>
+                <span>Dashboard</span>
+            </a>
+
+            <a href="create-meeting.html" class="nav-link">
+                <i class="fa-solid fa-plus"></i>
+                <span>Create Meeting</span>
+            </a>
+
+            <a href="join-meeting.html" class="nav-link">
+                <i class="fa-solid fa-right-to-bracket"></i>
+                <span>Join Meeting</span>
+            </a>
+
+            <a href="my-meetings.html" class="nav-link">
+                <i class="fa-solid fa-calendar-days"></i>
+                <span>My Meetings</span>
+            </a>
+
+            <a href="meeting-history.html" class="nav-link">
+                <i class="fa-solid fa-clock-rotate-left"></i>
+                <span>Meeting History</span>
+            </a>
+        </nav>
+
+        <div class="menu-label tools-label">COLLABORATION</div>
+
+        <nav class="navigation">
+            <a href="shared-files.html" class="nav-link">
+    <i class="fa-solid fa-folder-open"></i>
+    <span>Shared Files</span>
+</a>
+
+            <a href="whiteboard.html" class="nav-link active">
+                <i class="fa-solid fa-chalkboard"></i>
+                <span>Whiteboard</span>
+            </a>
+        </nav>
+
+        <div class="sidebar-bottom">
+            <div class="help-card">
+                <i class="fa-solid fa-circle-question"></i>
+                <h4>Need Help?</h4>
+                <p>Contact our support team.</p>
+            </div>
+
+            <a href="#" class="nav-link logout-link" id="logoutBtn">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                <span>Logout</span>
+            </a>
+        </div>
+    </aside>
+
+    <main class="main-content">
+
+        <header class="topbar">
+            <div>
+                <div class="welcome-label">COLLABORATION</div>
+                <h2>Whiteboard</h2>
+            </div>
+
+            <div class="topbar-right">
+                <div class="profile">
+                    <div class="profile-avatar" id="profileAvatar">D</div>
+                    <div class="profile-info">
+                        <h4 id="profileName">User</h4>
+                        <span>Free Account</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <section class="dashboard-content whiteboard-content">
+
+            <div class="whiteboard-heading">
+                <div>
+                    <h2>Collaborative Whiteboard</h2>
+                    <p>Draw and share ideas with your meeting participants.</p>
+                </div>
+                <div class="connection-status" id="connectionStatus">
+                    <span></span>
+                    Waiting for meeting
+                </div>
+            </div>
+
+            <div class="whiteboard-meeting-bar">
+                <div class="meeting-input-group">
+                    <label for="meetingId">Meeting ID</label>
+                    <input type="text" id="meetingId" placeholder="Enter meeting ID">
+                </div>
+
+                <button id="connectBtn" class="connect-btn">
+                    <i class="fa-solid fa-link"></i>
+                    Connect
+                </button>
+            </div>
+
+            <div class="whiteboard-toolbar">
+                <div class="drawing-tools">
+                    <button class="tool-btn active" id="penTool" title="Pen">
+                        <i class="fa-solid fa-pen"></i>
+                    </button>
+
+                    <button class="tool-btn" id="eraserTool" title="Eraser">
+                        <i class="fa-solid fa-eraser"></i>
+                    </button>
+
+                    <div class="tool-divider"></div>
+
+                    <label class="color-picker-label" for="brushColor">
+                        Color
+                    </label>
+                    <input type="color" id="brushColor" value="#7965f5">
+
+                    <label class="color-picker-label" for="brushSize">
+                        Size
+                    </label>
+                    <input type="range" id="brushSize" min="1" max="20" value="4">
+                    <span id="brushSizeValue">4px</span>
+                </div>
+
+                <button id="clearBoardBtn" class="clear-board-btn">
+                    <i class="fa-solid fa-trash"></i>
+                    Clear Board
+                </button>
+            </div>
+
+            <div class="whiteboard-panel">
+                <canvas id="whiteboardCanvas"></canvas>
+                <div class="canvas-placeholder" id="canvasPlaceholder">
+                    <i class="fa-solid fa-chalkboard"></i>
+                    <h3>Connect to a Meeting</h3>
+                    <p>Enter a meeting ID and connect to start collaborating.</p>
+                </div>
+            </div>
+
+            <div class="whiteboard-footer">
+                <span><i class="fa-solid fa-users"></i> Real-time collaboration</span>
+                <span id="boardMeetingLabel">No meeting connected</span>
+            </div>
+
+        </section>
+
+        <footer class="footer">
+            <p>© 2026 MeetSpace. All rights reserved.</p>
+        </footer>
+
+    </main>
+</div>
+
+<script src="https://cdn.socket.io/4.8.1/socket.io.min.js"></script>
+<script src="js/whiteboard.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</body>
+</html>

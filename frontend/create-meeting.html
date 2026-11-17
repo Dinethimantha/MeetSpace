@@ -1,0 +1,180 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MeetSpace | Create Meeting</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/create-meeting.css">
+</head>
+<body>
+
+<div class="app-layout">
+
+    <aside class="sidebar">
+        <div class="brand">
+            <div class="brand-icon">
+                <i class="fa-solid fa-video"></i>
+            </div>
+            <span>MeetSpace</span>
+        </div>
+
+        <div class="menu-label">MENU</div>
+
+        <nav class="navigation">
+            <a href="dashboard.html" class="nav-link">
+                <i class="fa-solid fa-house"></i><span>Dashboard</span>
+            </a>
+
+            <a href="create-meeting.html" class="nav-link active">
+                <i class="fa-solid fa-plus"></i><span>Create Meeting</span>
+            </a>
+
+            <a href="join-meeting.html" class="nav-link">
+                <i class="fa-solid fa-right-to-bracket"></i><span>Join Meeting</span>
+            </a>
+
+            <a href="my-meetings.html" class="nav-link">
+    <i class="fa-solid fa-calendar-days"></i><span>My Meetings</span>
+</a>
+
+            <a href="meeting-history.html" class="nav-link">
+    <i class="fa-solid fa-clock-rotate-left"></i><span>Meeting History</span>
+</a>
+        </nav>
+
+        <div class="menu-label tools-label">COLLABORATION</div>
+
+        <nav class="navigation">
+           <a href="shared-files.html" class="nav-link">
+    <i class="fa-solid fa-folder-open"></i>
+    <span>Shared Files</span>
+</a>
+
+            <a href="whiteboard.html" class="nav-link">
+    <i class="fa-solid fa-chalkboard"></i>
+    <span>Whiteboard</span>
+</a>
+        </nav>
+
+        <div class="sidebar-bottom">
+            <div class="help-card">
+                <div class="help-icon">
+                    <i class="fa-solid fa-circle-question"></i>
+                </div>
+                <h4>Need Help?</h4>
+                <p>Get support with your meetings.</p>
+                <a href="#">Contact Support <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+
+            <a href="#" class="nav-link logout-link" id="logoutBtn">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                <span>Logout</span>
+            </a>
+        </div>
+    </aside>
+
+    <main class="main-content">
+
+        <header class="topbar">
+            <div>
+                <p class="welcome-label">WORKSPACE</p>
+                <h2>Create Meeting</h2>
+            </div>
+
+            <div class="topbar-right">
+                <button class="icon-button" aria-label="Notifications">
+                    <i class="fa-regular fa-bell"></i>
+                    <span class="notification-dot"></span>
+                </button>
+
+                <div class="profile">
+                    <div class="profile-avatar" id="profileAvatar">U</div>
+                    <div class="profile-info">
+                        <strong id="profileName">User</strong>
+                        <span>Free Account</span>
+                    </div>
+                    <i class="fa-solid fa-chevron-down"></i>
+                </div>
+            </div>
+        </header>
+
+        <section class="create-wrapper">
+
+            <div class="create-heading">
+                <span class="section-tag">NEW MEETING</span>
+                <h1>Bring everyone together.</h1>
+                <p>Create a meeting room and invite your team members to join.</p>
+            </div>
+
+            <div class="create-card">
+
+                <div class="create-card-icon">
+                    <i class="fa-solid fa-video"></i>
+                </div>
+
+                <h2>Meeting Details</h2>
+                <p class="card-description">Enter a title for your new meeting.</p>
+
+                <form id="createMeetingForm">
+                    <label for="meetingTitle">Meeting Title</label>
+
+                    <input
+                        type="text"
+                        id="meetingTitle"
+                        placeholder="e.g. Weekly Team Meeting"
+                        maxlength="100"
+                        required
+                    >
+
+                    <button type="submit" id="createMeetingBtn">
+                        Create Meeting <span>→</span>
+                    </button>
+                </form>
+
+                <div id="errorMessage" class="meeting-message error-message"></div>
+
+                <div id="meetingResult" class="meeting-result">
+
+                    <div class="result-success">
+                        <i class="fa-solid fa-circle-check"></i>
+                        Meeting created successfully!
+                    </div>
+
+                    <p>Your meeting is ready. Share the Meeting ID with participants.</p>
+
+                    <label>Meeting ID</label>
+
+                    <div class="meeting-id-box">
+                        <strong id="generatedMeetingId"></strong>
+                        <button type="button" id="copyMeetingId">Copy</button>
+                    </div>
+
+                    <button type="button" id="startMeetingBtn" class="start-meeting-btn">
+                        Start Meeting <span>→</span>
+                    </button>
+
+                </div>
+            </div>
+
+            <div class="create-note">
+                <i class="fa-solid fa-shield-halved"></i>
+                Your meeting is protected by MeetSpace authentication.
+            </div>
+
+            <footer class="create-footer">
+                <span>© 2026 MeetSpace. All rights reserved.</span>
+                <span>Connect. Collaborate. Create.</span>
+            </footer>
+
+        </section>
+    </main>
+</div>
+
+<script src="js/create-meeting.js"></script>
+</body>
+</html>

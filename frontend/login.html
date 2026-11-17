@@ -1,0 +1,96 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | MeetSpace</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/auth.css">
+</head>
+<body>
+    <div class="auth-container">
+        <div class="auth-left">
+            <a href="login.html" class="brand">
+                <span class="brand-icon">M</span>
+                <span>MeetSpace</span>
+            </a>
+
+            <div class="hero-content">
+                <div class="hero-badge">Connect. Collaborate. Create.</div>
+                <h1>Meet beyond<br>the distance.</h1>
+                <p>Bring your team together with secure video meetings, screen sharing and real-time collaboration.</p>
+
+                <div class="feature-list">
+                    <div class="feature-item">
+                        <span>01</span>
+                        <div>
+                            <strong>HD Video Meetings</strong>
+                            <small>Connect with your team in real time.</small>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <span>02</span>
+                        <div>
+                            <strong>Real-time Collaboration</strong>
+                            <small>Share files and work together.</small>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <span>03</span>
+                        <div>
+                            <strong>Secure Communication</strong>
+                            <small>Your meetings stay protected.</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="left-footer">© 2026 MeetSpace. All rights reserved.</div>
+        </div>
+
+        <div class="auth-right">
+            <div class="mobile-brand">
+                <span class="brand-icon">M</span>
+                <span>MeetSpace</span>
+            </div>
+
+            <div class="auth-card">
+                <div class="welcome-text">WELCOME BACK</div>
+                <h2>Sign in to your account</h2>
+                <p class="subtitle">Enter your details to continue to MeetSpace.</p>
+
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label for="email">Email address</label>
+                        <input type="email" id="email" placeholder="name@example.com" required>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="password-label">
+                            <label for="password">Password</label>
+                        </div>
+                        <input type="password" id="password" placeholder="Enter your password" required>
+                    </div>
+
+                    <div id="errorMessage" class="message error-message"></div>
+
+                    <button type="submit" id="loginBtn">Sign In <span>→</span></button>
+                </form>
+
+                <p class="auth-switch">
+                    Don't have an account?
+                    <a href="register.html">Create account</a>
+                </p>
+            </div>
+
+            <div class="security-note">
+                <span>🔒</span> Secure authentication powered by MeetSpace
+            </div>
+        </div>
+    </div>
+
+    <script src="js/login.js"></script>
+</body>
+</html>
